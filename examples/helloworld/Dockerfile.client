@@ -1,0 +1,14 @@
+# 使用指定的 Golang Alpine 作为基础镜像
+FROM registry-cn-hangzhou.ack.******.com/***/golang:1.22-alpine
+
+# 设置工作目录（可选）
+WORKDIR /app
+
+# 将当前目录中的 greeter_client 二进制文件拷贝到容器内的 /usr/local/bin/
+COPY greeter_client/greeter_client /usr/local/bin/
+
+# 确保 greeter_client 具有可执行权限
+RUN chmod +x /usr/local/bin/greeter_client
+
+# 设置容器启动命令为 sleep 365d
+CMD ["sleep", "365d"]

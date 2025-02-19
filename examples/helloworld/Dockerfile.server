@@ -1,0 +1,14 @@
+# 使用指定的 Golang Alpine 作为基础镜像
+FROM registry-cn-hangzhou.ack.******.com/***/golang:1.22-alpine
+
+# 设置工作目录（可选）
+WORKDIR /app
+
+# 将当前目录中的 greeter_server 二进制文件拷贝到容器内的 /usr/local/bin/
+COPY greeter_server/greeter_server /usr/local/bin/
+
+# 确保 greeter_server 具有可执行权限
+RUN chmod +x /usr/local/bin/greeter_server
+
+# 设置容器的启动命令为 greeter_server
+CMD ["greeter_server"]
